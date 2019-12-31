@@ -260,6 +260,7 @@ public class MainController extends AbstractInitializrController {
 	public ResponseEntity<byte[]> springZip(BasicProjectRequest basicRequest)
 			throws IOException {
 		ProjectRequest request = (ProjectRequest) basicRequest;
+		System.out.println("收到请求zip：" + request.toString());
 		File dir = this.projectGenerator.generateProjectStructure(request);
 
 		File download = this.projectGenerator.createDistributionFile(dir, ".zip");
@@ -291,6 +292,8 @@ public class MainController extends AbstractInitializrController {
 	public ResponseEntity<byte[]> springTgz(BasicProjectRequest basicRequest)
 			throws IOException {
 		ProjectRequest request = (ProjectRequest) basicRequest;
+		System.out.println("收到请求tgz：" + request.toString());
+
 		File dir = this.projectGenerator.generateProjectStructure(request);
 
 		File download = this.projectGenerator.createDistributionFile(dir, ".tar.gz");

@@ -154,6 +154,8 @@ $(function () {
                 }
             });
             engine.add(data.dependencies);
+            // 渲染默认tag
+            updateDefaultTag();
         });
     };
     var generatePackageName = function() {
@@ -248,7 +250,7 @@ $(function () {
         removeTag(id);
     });
     $("#dependencies input").bind("change", function () {
-        var value = $(this).val()
+        var value = $(this).val();
         if ($(this).prop('checked')) {
             var results = starters.get(value);
             addTag(results[0].id, results[0].name);
@@ -256,6 +258,7 @@ $(function () {
             removeTag(value);
         }
     });
+
     Mousetrap.bind(['command+enter', 'alt+enter'], function (e) {
         $("#form").submit();
         return false;
@@ -280,5 +283,19 @@ $(function () {
             $(".tosimpleversion").addClass("hidden");
             applyParams();
         }
+    }
+
+    // 如果已经被checked，就添加标签
+    var updateDefaultTag = function() {
+        $("#dependencies input").each(function () {
+            var value = $(this).val();
+            if ($(this).prop('checked')) {
+                var results = starters.get(value);
+                console.log(results);
+                addTag(results[0].id, results[0].name);
+            } else {
+                removeTag(value);
+            }
+        });
     }
 });

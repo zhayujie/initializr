@@ -147,7 +147,7 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                         {{#content}}
                         <div class="checkbox" data-range="{{#versionRange}}{{versionRange}}{{/versionRange}}">
                             <label>
-                                <input tabindex="13" type="checkbox" name="style" value="{{id}}">{{name}}
+                                <input tabindex="13" type="checkbox" name="style" value="{{id}}" checked>{{name}}
                                 <p class="help-block">{{#description}}{{.}}{{/description}}</p>
                                 {{#versionRequirement}}
                                 <p class="help-block version-requirement">requires Spring Boot {{.}}</p>
