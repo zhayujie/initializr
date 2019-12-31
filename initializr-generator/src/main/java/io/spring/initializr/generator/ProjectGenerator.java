@@ -225,7 +225,11 @@ public class ProjectGenerator {
 		rootDir.mkdirs();
 
 		File dir = initializerProjectDir(rootDir, request);
-
+		try {
+			System.out.println(dir.getCanonicalPath());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		if (isGradleBuild(request)) {
 			String gradle = new String(doGenerateGradleBuild(model));
 			writeText(new File(dir, "build.gradle"), gradle);
